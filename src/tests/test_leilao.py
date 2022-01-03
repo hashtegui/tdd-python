@@ -1,5 +1,5 @@
 from unittest import TestCase
-from dominio import *
+from leilao.dominio import *
 
 
 class TestLeilao(TestCase):
@@ -7,8 +7,8 @@ class TestLeilao(TestCase):
 
     def setUp(self):
 
-        self.gui = Usuario('Gui')
-        self.felipe = Usuario('Felipe')
+        self.gui = Usuario('Gui', 500.00)
+        self.felipe = Usuario('Felipe', 500.00)
         self.lance_do_felipe = Lance(self.felipe, 180.00)
         self.lance_do_gui = Lance(self.gui, 150.00)
         self.leilao = Leilao('Celular')
@@ -40,7 +40,7 @@ class TestLeilao(TestCase):
 
     
     def test_deve_retornar_o_maior_e_o_menor_valor_de_um_leilao_com_tres_lances(self):
-        yuri = Usuario('Yuri')
+        yuri = Usuario('Yuri', 500.00)
         lance_do_yuri = Lance(yuri, 120.00)
         
         
@@ -68,7 +68,7 @@ class TestLeilao(TestCase):
     #se o ultimo usuario for diferente, deve permitir propor o lance
 
     def test_deve_permitir_propor_um_lance_caso_o_ultimo_usuario_seja_diferente(self):
-        yuri = Usuario('Yuri')
+        yuri = Usuario('Yuri', 500.00)
         lance_do_yuri = Lance(yuri, 200.0)
 
         self.leilao.propoe(self.lance_do_gui)
